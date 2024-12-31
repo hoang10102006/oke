@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--bài 2-->
+<!--<h1>Chuyển đổi từ độ C sang độ F</h1>-->
+<!--<p>Nhập độ C:  </p>-->
+<!--<input type="number"  id="nhietdoC" placeholder="Nhập độ C">-->
+<!--<button onclick="chuyendoi()">Chuyển đổi</button>-->
+<!--<p id="result"></p>-->
+<!--<script>-->
+<!--  function chuyendoi()-->
+<!--  {-->
+<!--    let nhietdoC = document.getElementById("nhietdoC").value;-->
+<!--        nhietdoC = Number(nhietdoC)-->
+<!--    if(!isNaN(nhietdoC))-->
+<!--    {-->
+<!--      let nhietdoF = (nhietdoC * 9/5) + 32-->
+<!--      document.getElementById("result").innerHTML = nhietdoF.toFixed(2) + " độ F";-->
+<!--    }-->
+<!--    else-->
+<!--    {-->
+<!--      alert("vui lòng nhập giá trị hợp lệ")-->
+<!--    }-->
+<!--  }-->
+<!--  //bài 1-->
+<!--  // let physics = prompt("fill in your physics grades")-->
+<!--  // let chemistry = prompt("fill in your chemistry grades")-->
+<!--  // let biology = prompt("fill in your biology grades")-->
+<!--  // let phy = Number(physics)-->
+<!--  // let bio = Number(biology)-->
+<!--  // let che = Number(chemistry)-->
+<!--  // let total = phy + bio + che-->
+<!--  // let average = (phy + bio + che)/3-->
+<!--  // document.write("Total grades is " + total + "<br>")-->
+<!--  // document.write("Average grade is " + average.toFixed(2) + "<br>")-->
+<h1>Tính diện tích hình tròn</h1>
+<p>Nhập bán kính(r):</p>
+<input type="number"  id="radius" placeholder="Nhập bán kính">
+<button onclick="caculateArea()">Tính diện tích</button>
+<p  id="result"></p>
+<script>
+  function caculateArea() {
+    var radius = document.getElementById("radius").value;
+        radius=Number(radius);
+        if(!isNaN(radius)&&radius>0){
+          let area = Math.PI * Math.pow(radius,2);
+          document.getElementById("result").innerHTML=`Diện tích hình tròn với bán kính ${radius} là: ${area.toFixed(2)}`;
+          }
+        else
+        {
+          alert("vui lòng nhập bán kính hợp lệ!");
+        }
+  }
+</script>
+</body>
+</html>
