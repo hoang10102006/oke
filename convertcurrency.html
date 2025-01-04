@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+  <input type="number"  name="amount" id="amount">
+  <select name="from" id="from">
+    <option value="vnd">VietNam</option>
+    <option value="usd">USD</option>
+  </select>
+  <select name="to" id="to">
+    <option value="usd">USD</option>
+    <option value="vnd">VietNam</option>
+  </select>
+  <button type="button" onclick="convert()">Convert</button>
+  <div id="result"></div>
+</form>
+<script>
+  function convert() {
+    console.log('Click')
+    const amount = parseFloat(document.getElementById("amount").value);
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    let result = 0;
+    const exchangeUSD2VND = 25395;
+
+    if (isNaN(amount) || amount <= 0) {
+      document.getElementById("result").innerHTML = '<strong style="color: red;">Please enter a valid amount!</strong>';
+      return;
+    }
+
+    if (from ==='vnd' && to ==='usd')
+    {
+      result = amount / exchangeUSD2VND;
+      console.log(result);
+    }
+    else if (from ==='usd' && to ==='vnd')
+    {
+      result = amount * exchangeUSD2VND;
+    }
+    else if (from ==='vnd' && to ==='vnd')
+    {
+      result = amount;
+    }
+    else if (from ==='usd' && to ==='usd')
+    {
+      result = amount;
+    }
+    document.getElementById("result").innerHTML = '<strong style="color: blue;">Result: ' + result.toFixed(2) + '</strong>';
+
+  }
+</script>
+</body>
+</html>
