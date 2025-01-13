@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .calculator {
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input, .calculator button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Ứng dụng máy tính</h1>
+<div class="calculator">
+<form id="calculatorForm">
+    <input type="number" id="num1" placeholder="số thứ nhất" required>
+    <input type="number" id="num2" placeholder="số thứ hai" required>
+    <br>
+    <button type="button" onclick="calculate('+')">+</button>
+    <button type="button" onclick="calculate('-')">-</button>
+    <button type="button" onclick="calculate('*')">*</button>
+    <button type="button" onclick="calculate('/')">/</button>
+</form>
+<div class="result" id="result">kết quả: </div>
+</div>
+<script>
+    function calculate(operator){
+        const num1 = parseFloat(document.getElementById("num1").value);
+        const num2 = parseFloat(document.getElementById("num2").value);
+        if(isNaN(num1) || isNaN(num2)) {
+            document.getElementById("result").textContent = "Vui lòng nhập số hợp lệ "
+            return;
+        }
+
+        let result;
+        switch(operator) {
+            case "+":
+                result = num1 + num2;
+                break;
+            case "-":
+                result = num1 - num2;
+                break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+                result = num2 !== 0 ? num1 / num2 : "Không thể chia cho 0!";
+                break;
+            default:
+                result = "Phép tính không hợp lệ!";
+        }
+        document.getElementById("result").textContent = `Kết quả: ${result.toFixed(2)}`;
+    }
+</script>
+</body>
+</html>
