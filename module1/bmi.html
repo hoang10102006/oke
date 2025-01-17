@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+  <input type="number" name="weight" id="weight" placeholder="nhập cân nặng">
+  <input type="number" name="height" id="height" placeholder="nhập chiều cao">
+<button type="button" onclick="calculateBMI()">ấn vào đây để xem kết quả BMI của bạn</button>
+<p id="result"></p>
+</form>
+<script>
+  function calculateBMI(){
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
+    if (weight <=0 || height <= 0) {
+      document.getElementById('result').textContent = "vui lòng nhập chiều cao và cân nặng hợp lệ!"
+      return;
+    }
+    const bmi = weight / (height * height);
+    let category = ''
+    if (bmi < 18.5) {
+      category = "Thiếu cân";
+    } else if (bmi >= 18.5 && bmi < 25) {
+      category = "bình thường";
+    } else if (bmi >= 25 && bmi < 30) {
+      category = "thừa cân";
+    } else  {
+      category = "béo phì rồi ô cháu ơi"
+    }
+    document.getElementById(`result`).textContent =
+            `Chỉ số BMI của bạn là: ${bmi.toFixed(2)} trạng thái của bạn: ${category}`
+  }
+
+</script>
+</body>
+</html>
