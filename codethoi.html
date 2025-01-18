@@ -2,89 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
         .calculator {
-            width: 300px;
-            margin: 0 auto;
-            border: 1px solid #ccc;
+            border: 2px solid black;
             padding: 20px;
+            border-radius: 10px;
+            background: white;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        input {
+        .display {
             width: 100%;
-            margin-bottom: 10px;
+            height: 50px;
+            text-align: right;
+            font-size: 1.5em;
+            margin-bottom: 20px;
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
 
-        .buttons button {
-            width: 23%;
-            height: 50px;
-            margin: 5px;
-            font-size: 20px;
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            color: blue;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+
+        .button-clear {
+            color: red;
         }
     </style>
 </head>
-
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Máy tính đơn giản</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
 <body>
 <div class="calculator">
-    <input type="text" id="result" readonly>
-    <div class="buttons">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>+</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>-</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>*</button>
-        <button>C</button>
-        <button>0</button>
-        <button>=</button>
-        <button>/</button>
+    <input type="text" class="display" id="display" disabled>
+    <div class="button-grid">
+        <button onclick="appendNumber(1)">1</button>
+        <button onclick="appendNumber(2)">2</button>
+        <button onclick="appendNumber(3)">3</button>
+        <button onclick="appendOperator('+')">+</button>
+
+        <button onclick="appendNumber(4)">4</button>
+        <button onclick="appendNumber(5)">5</button>
+        <button onclick="appendNumber(6)">6</button>
+        <button onclick="appendOperator('-')">-</button>
+
+        <button onclick="appendNumber(7)">7</button>
+        <button onclick="appendNumber(8)">8</button>
+        <button onclick="appendNumber(9)">9</button>
+        <button onclick="appendOperator('*')">x</button>
+
+        <button class="button-clear" onclick="clearDisplay()">C</button>
+        <button onclick="appendNumber(0)">0</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendOperator('/')">/</button>
     </div>
 </div>
+
 <script>
-    const result = document.getElementById('result');
-    const buttons = document.querySelectorAll('button');
+    const display = document.getElementById('display');
 
-    let currentNumber = '';
-    let operator = '';
+    function appendNumber(number) {
+        display.value += number;
+    }
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const value = button.textContent;
+    function appendOperator(operator) {
+        display.value += ` ${operator} `;
+    }
 
-            if (value === 'C') {
-                currentNumber = '';
-                operator = '';
-                result.value = '';
-            } else if (value === '=') {
-                result.value = eval(currentNumber);
-                currentNumber = '';
-                operator = '';
-            } else if (value === '+' || value === '-' || value === '*' || value === '/') {
-                operator = value;
-                currentNumber += value;
-            } else {
-                currentNumber += value;
-                result.value = currentNumber;
-            }
-        });
-    });
+    function clearDisplay() {
+        display.value = '';
+    }
+
+    function calculate() {
+        try {
+            display.value = eval(display.value.replace('x', '*'));
+        } catch (error) {
+            display.value = 'Error';
+        }
+    }
 </script>
-</body>
-</html>
 </body>
 </html>
