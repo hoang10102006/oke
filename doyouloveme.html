@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chơi</title>
+    <style>
+        body {
+            background-color: white;
+        }
+        .wrap {
+            position: relative;
+            text-align: center;
+            width: 600px;
+            background-color: white;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>E có yêu a ko</h1>
+    <button onclick="alert('a yêu e')">Yes</button>
+    <button id="btnNo">No</button>
+</div>
+<script>
+    let btnNo = document.getElementById('btnNo');
+    btnNo.addEventListener("mouseover", function() {
+      let posX = Math.round(Math.random()*(window.innerWidth - 500 - btnNo.offsetWidth));
+      let posY = Math.round(Math.random()*(window.innerHeight - 500 - btnNo.offsetHeight));
+      btnNo.style.position = 'absolute';
+      btnNo.style.left = posX + 'px';
+      btnNo.style.top = posY + 'px';
+    })
+</script>
+</body>
+</html>
